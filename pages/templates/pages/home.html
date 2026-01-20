@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br><br>
+<div class="row align-items-center vh-100 mt-5">
+    <div class="col-md-5 col-12 d-flex justify-content-center mb-4 mb-md-0">
+        {% if perfil.imagen %}
+        <div class="rounded-circle shadow-sm d-flex align-items-center justify-content-center" 
+             style="background-color: #fce4e4; width: 220px; height: 220px; padding: 10px;">
+            <img src="{{ perfil.imagen.url }}" 
+                 class="rounded-circle" 
+                 alt="{{ perfil.name }}"
+                 style="width: 200px; height: 200px; object-fit: cover;">
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-7 col-12 text-center text-md-start">
+        <h1 class="display-4 fw-bold mb-1">{{ perfil.name }} {{ perfil.apellido }}</h1>
+        <h4 class="text-danger fw-bold mb-4">{{ perfil.profesion }}</h4>
+        <p class="fs-5 text-muted lh-base mb-4" style="max-width: 600px;">
+            {{ perfil.descripcion }}
+        </p>
+        </div>
+    </div>
+
+<div class="row text-center mt-5 py-5 border-top">
+    <div class="col-12">
+        <h3 class="display-4 fw-bold mb-4">Tecnologías</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            {% for tecnologia in tecnologias %}
+                <span class="badge rounded-pill bg-dark px-4 py-2 fs-6 shadow-sm">
+                    {{ tecnologia }}
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
