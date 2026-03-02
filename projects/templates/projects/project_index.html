@@ -46,5 +46,23 @@
         </div>
         {% endfor %}
     </div>
+
+    <div class="pagination mt-4 justify-content-center">
+    {% if projects.has_previous %}
+        <a class="btn btn-outline-dark me-2" href="?page=1">&laquo; Primero</a>
+        <a class="btn btn-outline-dark me-2" href="?page={{ projects.previous_page_number }}">Anterior</a>
+    {% endif %}
+
+    <span class="btn btn-dark disabled">
+        Página {{ projects.number }} de {{ projects.paginator.num_pages }}
+    </span>
+
+    {% if projects.has_next %}
+        <a class="btn btn-outline-dark ms-2" href="?page={{ projects.next_page_number }}">Siguiente</a>
+        <a class="btn btn-outline-dark ms-2" href="?page={{ projects.paginator.num_pages }}">Último &raquo;</a>
+    {% endif %}
 </div>
+</div>
+
+
 {% endblock %}

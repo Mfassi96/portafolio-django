@@ -1,14 +1,20 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from .models import Project
+from django.core.paginator import Paginator
 
 def project_index(request):
-    # Trae todos los objetos de la base de datos
-    projects = Project.objects.all()
-    # Pasa esos proyectos al archivo HTML (que crearemos luego)
+    project_list = Project.objects.all().order_by('-id')
+    
+    paginator = Paginator(project_list, 6)
+    
+    page_number = request.GET.get('page')
+    
+    page_obj = paginator.get_page(page_number)
     context = {
-        'projects': projects
+        'projects': page_obj
     }
-    return render(request, 'projects/project_index.html',context)
+    return render(request, 'projects/project_index.html', context)
+
 
 def project_view(request, pk):
     project = Project.objects.get(pk=pk)
