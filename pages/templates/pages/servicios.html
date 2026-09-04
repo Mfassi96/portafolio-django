@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br><br>
+<div class="row mt-5 pt-5">
+    <div class="col-12 text-center mb-5">
+        <h1 class="display-4 fw-bold">Servicios</h1>
+        <p class="text-muted fs-5">Lo que puedo hacer por ti</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for servicio in servicios %}
+    <div class="col-md-4 col-sm-6">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <i class="fa-solid {{ servicio.icono }} fa-3x text-danger"></i>
+                </div>
+                <h5 class="card-title fw-bold">{{ servicio.titulo }}</h5>
+                <p class="card-text text-muted">{{ servicio.descripcion }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+        <p class="text-muted fs-5">No hay servicios disponibles por el momento.</p>
+    </div>
+    {% endfor %}
+</div>
+
+<br><br>
+{% endblock %}

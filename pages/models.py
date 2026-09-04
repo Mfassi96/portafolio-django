@@ -9,4 +9,16 @@ class Info(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return self.name    
+        return self.name
+
+class Servicio(models.Model):
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    icono = models.CharField(max_length=50, help_text="Clase de Font Awesome, ej: fa-code")
+    activo = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.titulo
+    
+    class Meta:
+        verbose_name_plural = "Servicios"    
